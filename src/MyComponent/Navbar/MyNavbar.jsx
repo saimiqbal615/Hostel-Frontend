@@ -3,6 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
 import logo from '../images/logo.png'
+import {Link} from 'react-router-dom'
 import './My_Navbar.css'
 
 function MyNavbar() {
@@ -15,20 +16,21 @@ function MyNavbar() {
       <Navbar data-aos="fade-down" style={{ width: '100%' }} collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <img className='logo' src={logo} alt="" />
-          <Navbar.Brand  href='/'>Hostel World</Navbar.Brand>
+          <Navbar.Brand>Hostel One</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mx-auto">
-              <Nav.Link href='/'>Home</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/rooms">Rooms</Nav.Link>
-              <Nav.Link href="/gallery">Gallery</Nav.Link>
-              <Nav.Link href="/contact">Contact Us</Nav.Link>
+            <Nav  className="mx-auto">  
+
+              <Link id='navmenu' to='/'>Home</Link> 
+              <Link id='navmenu'  to="/about">About</Link>
+              <Link id='navmenu'  to="/rooms">Rooms</Link>
+              <Link id='navmenu'  to="/gallery">Gallery</Link>
+              <Link id='navmenu'  to="/contact">Contact Us</Link>
             </Nav>
             <Nav>
-            <Nav.Link href="/Registration"><Button variant="outline-info">Register Room</Button></Nav.Link>
-            <Nav.Link href="/signup"><Button variant="outline-danger">SignUp</Button></Nav.Link>
-            <Nav.Link href="/login"><Button variant="outline-danger">Login</Button></Nav.Link>
+            <Link id='button' to="/Registration"><Button variant="outline-info">Register Room</Button></Link>
+            <Link id='button' to="/signup"><Button variant="outline-secondary">SignUp</Button></Link>
+            <Link id='button' to="/login"><Button variant="outline-secondary">Login</Button></Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

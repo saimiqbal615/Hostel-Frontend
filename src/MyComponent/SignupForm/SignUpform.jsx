@@ -1,5 +1,6 @@
 import React from 'react'
 import './SignUpform.css'
+import {Link} from 'react-router-dom'
 function SignUpform() {
   return (
     <div style={{width:'100%'}}>
@@ -80,7 +81,7 @@ function SignUpform() {
     </p>
   </form>
   <div className="text-center">
-    Already have an account? <a href="/login">Login here</a>.
+    Already have an account? <Link to="/login">Login here</Link>
   </div>
 </div>
 

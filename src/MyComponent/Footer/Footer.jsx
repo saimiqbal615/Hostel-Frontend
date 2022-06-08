@@ -13,7 +13,7 @@ const Footer = () => {
    
       
        <div className="col-md-4 footer-column">
-       <h2  className='footer-h2'>  <img className='logo' src={logo} alt="" /> Hostel World</h2>
+       <h2  className='footer-h2'>  <img className='logo' src={logo} alt="" /> Hostel One</h2>
 <p className='footer-p'>
   Lorem ipsum dolor sit amet consectetur adipisicing elit.Fuga nam mollitia doloremque quam at fugit ipsam laboriosam enim assumenda iure.Lorem ipsum dolor sit amet consectetur adipisicing elit.Deleniti,asperiores.
 </p>

@@ -3,8 +3,34 @@
     height: auto;
    margin-right: -20px;
     background: none;
-    
-   
-
-
 }
+
+#navmenu{
+    color: #fff;
+    padding: 0px 10px;
+    
+}
+
+#button{
+
+  padding: 0px 7px;
+}
+
+ 
+/* #navmenu:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: yellow;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  } */
+  
+  #navmenu:hover:after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  } 
