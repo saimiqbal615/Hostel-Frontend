@@ -1,14 +1,37 @@
 import React from 'react'
-    import './Registration.css'
+import './Registration.css'
+import { useState } from 'react';
+import { addApplicant } from '../service/api';
 
 function Registration() {
+ 
+ const [userData, setuserData] = useState({
+
+    firstname:"",
+    lastname:"",
+    address:"",     
+    email:"",
+    phone:"",
+ 
+})
+
+const {firstname, lastname,address,email} = userData;
+
+const handleChange =  (e) => {
+setuserData({...userData, [e.target.name]: [e.target.value]})
+}
+
+const addDetails = async (e) => {
+e.preventDefault();
+await addApplicant(userData);
+}
   
   return (
 
   
     
     <section className="vh-100 gradient-custom">
-  <div className="container py-5 h-100">
+  <div data-aos="zoom-in" className="container py-5 h-100">
     <div className="row justify-content-center align-items-center h-100">
       <div className="col-12 col-lg-9 col-xl-7">
         <div
@@ -22,9 +45,11 @@ function Registration() {
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
                     <input
+                    name='firstname'
                       type="text"
                       id="firstName"
                       className="form-control form-control-lg" placeholder='First Name'
+                      onChange={(e)=> handleChange(e)}
                     />
 
                   </div>
@@ -32,9 +57,11 @@ function Registration() {
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
                     <input
+                    name='lastname'
                       type="text"
                       id="lastName"
                       className="form-control form-control-lg" placeholder=' Last Name'
+                      onChange={(e)=> handleChange(e)}
                     />
 
                   </div>
@@ -44,9 +71,11 @@ function Registration() {
                 <div className="col-md-6 mb-4 d-flex align-items-center">
                   <div className="form-outline datepicker w-100">
                     <input
+                    name='address'
                       type="text"
                       className="form-control form-control-lg"
                       id="birthdayDate" placeholder='Address'
+                      onChange={(e)=> handleChange(e)}
                     />
                   </div>
                 </div>
@@ -95,9 +124,11 @@ function Registration() {
                 <div className="col-md-6 mb-4 pb-2">
                   <div className="form-outline">
                     <input
+                    name='email'
                       type="email"
                       id="emailAddress"
                       className="form-control form-control-lg" placeholder='Email'
+                      onChange={(e)=> handleChange(e)}
                     />
                     
                   </div>
@@ -105,9 +136,11 @@ function Registration() {
                 <div className="col-md-6 mb-4 pb-2">
                   <div className="form-outline">
                     <input
+                    name='phone'
                       type="tel"
                       id="phoneNumber"
                       className="form-control form-control-lg" placeholder='Phone Number'
+                      onChange={(e)=> handleChange(e)}
                     />
                   </div>
                 </div>
@@ -125,9 +158,10 @@ function Registration() {
               </div>
               <div className="mt-4 pt-2">
                 <input
-                  className="btn btn-primary btn-lg"
+                  className="btn btn-dark btn-lg"
                   type="submit"
                   defaultValue="Submit"
+                  onClick={(e)=> addDetails(e)}
                 />
               </div>
             </form>

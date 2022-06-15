@@ -9,7 +9,7 @@ import './My_Navbar.css'
 function MyNavbar() {
   useEffect(() => {
     AOS.init(1500);
-    // AOS.refresh();
+    AOS.refresh();
   }, []);
   return (
    
@@ -28,9 +28,9 @@ function MyNavbar() {
               <Link id='navmenu'  to="/contact">Contact Us</Link>
             </Nav>
             <Nav>
-            <Link id='button' to="/Registration"><Button variant="outline-info">Register Room</Button></Link>
+            <Link id='button' to="/registrationform"><Button variant="outline-info">Register Room</Button></Link>
             <Link id='button' to="/signup"><Button variant="outline-secondary">SignUp</Button></Link>
-            <Link id='button' to="/login"><Button variant="outline-secondary">Login</Button></Link>
+            <Link id='button' to="/users"><Button variant="outline-secondary">Login</Button></Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

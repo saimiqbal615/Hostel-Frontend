@@ -1,7 +1,33 @@
 import React from 'react'
 import './SignUpform.css'
 import {Link} from 'react-router-dom'
+import {useState} from 'react';
+import {signinUser} from '../service/api'
 function SignUpform() {
+
+  const [userData, setuserData] = useState({
+
+   username:"",     
+   email:"",
+   password:"",
+   confirmPassword:"",
+ 
+})
+
+  const {username, email, password, confirmPassword} = userData;
+
+  const handleChange = (e) =>{
+   setuserData({...userData,[e.target.name] : e.target.value})
+
+  }
+
+
+  const addDetails = async (e) => {
+    e.preventDefault();
+    await signinUser(userData);
+
+  }
+   
   return (
     <div style={{width:'100%'}}>
 
@@ -14,11 +40,13 @@ function SignUpform() {
           <i className="fa fa-user" />
         </span>
         <input
+          
           type="text"
           className="form-control"
           name="username"
           placeholder="Username"
           required="required"
+          onChange={(e)=> handleChange(e)}
         />
       </div>
     </div>
@@ -33,6 +61,7 @@ function SignUpform() {
           name="email"
           placeholder="Email Address"
           required="required"
+          onChange={(e)=> handleChange(e)}
         />
       </div>
     </div>
@@ -42,11 +71,12 @@ function SignUpform() {
           <i className="fa fa-lock" />
         </span>
         <input
-          type="text"
+          type="password"
           className="form-control"
           name="password"
           placeholder="Password"
           required="required"
+          onChange={(e)=> handleChange(e)}
         />
       </div>
     </div>
@@ -57,27 +87,28 @@ function SignUpform() {
           <i className="fa fa-check" />
         </span>
         <input
-          type="text"
+          type="password"
           className="form-control"
-          name="confirm_password"
+          name="confirmpassword"
           placeholder="Confirm Password"
           required="required"
+          onChange={(e)=> handleChange(e)}
         />
       </div>
     </div>
     <div className="form-group">
      <center>
-       <a href="/login">
-      <button type="submit" className="btn btn-primary btn-block btn-lg">
+       {/* <a href="/login"> */}
+      <button type="submit" className="btn btn-primary btn-block btn-lg" 
+      onClick={(e)=> addDetails(e)}>
         Sign Up
       </button>
-      </a>
+      {/* </a> */}
       </center>
     </div>
     <p className="small text-center">
       By clicking the Sign Up button, you agree to our <br />
-      <a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a>
-      .
+      <Link to="#">Terms &amp; Conditions</Link>, and <Link to="#">Privacy Policy</Link>
     </p>
   </form>
   <div className="text-center">

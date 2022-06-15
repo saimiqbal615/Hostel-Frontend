@@ -1,13 +1,40 @@
-import React from 'react'
+ import React from 'react'
 import './login.css'
 import { BsPersonFill } from 'react-icons/bs';
 import { FaLock } from 'react-icons/fa';
 import logo from '../images/logo.png';
+import { useState } from 'react';
+import { addUser } from '../service/api';
+
+
 function Loginform() {
+//---------------------state varable-----------------
+const [userData, setuserData] = useState({
+
+        username:"",
+        password:""
+})
+
+const {username, password} = userData;
+
+const handleChange =  (e) => {
+  setuserData({...userData,
+     [e.target.name]: e.target.value})
+}
+
+const addDetails = async (e) => {
+  e.preventDefault();
+
+ await addUser(userData);
+}
+
+
+
   return (
     
     
-   <div style={{width:'100%'}}>
+    <div style={{width:'100%'}}>
+    
 
 <div data-aos="zoom-in" className="login-page bg-light">
   <div className="container">
@@ -28,9 +55,11 @@ function Loginform() {
                         <BsPersonFill />
                       </div>
                       <input
+                        name='username'
                         type="text"
                         className="form-control"
                         placeholder="Enter Username"
+                        onChange={(e)=> handleChange(e)}
                       />
                     </div>
                   </div>
@@ -43,9 +72,11 @@ function Loginform() {
                         <FaLock />
                       </div>
                       <input
-                        type="text"
+                        name='password'
+                        type="password"
                         className="form-control"
                         placeholder="Enter Password"
+                        onChange={(e)=> handleChange(e)}
                       />
                     </div>
                   </div>
@@ -74,6 +105,7 @@ function Loginform() {
                     <button
                       type="button"
                       className="btn btn-primary px-4 float-end mt-4"
+                      onClick={(e)=> addDetails(e)}
                     >
                       Login
                     </button> </a>
