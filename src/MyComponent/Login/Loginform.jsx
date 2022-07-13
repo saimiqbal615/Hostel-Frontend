@@ -3,7 +3,7 @@ import './login.css'
 import { BsPersonFill } from 'react-icons/bs';
 import { FaLock } from 'react-icons/fa';
 import logo from '../images/logo.png';
-import { useState } from 'react';
+import { useState,Link } from 'react';
 import { addUser } from '../service/api';
 
 
@@ -25,7 +25,15 @@ const handleChange =  (e) => {
 const addDetails = async (e) => {
   e.preventDefault();
 
- await addUser(userData);
+ await addUser(userData).then((res)=>{
+  console.log(res)
+  if(res.data.message==='Found')
+    alert(`User found`)
+    else
+    alert('User doesnt exist')
+ })
+
+
 }
 
 
@@ -101,14 +109,14 @@ const addDetails = async (e) => {
                     </a>
                   </div>
                   <div className="col-12">
-                      <a href='/'>
+                      
                     <button
                       type="button"
                       className="btn btn-primary px-4 float-end mt-4"
                       onClick={(e)=> addDetails(e)}
                     >
                       Login
-                    </button> </a>
+                    </button> 
                 
                   </div>
                 </form>
